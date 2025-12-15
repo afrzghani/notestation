@@ -16,7 +16,13 @@ export default function Welcome() {
 
     return (
         <>
-            <Head title="Welcome" />
+            <Head>
+                <title>NoteStation - Platform Catatan Digital untuk Mahasiswa</title>
+                <meta name="description" content="Buat, kelola, dan bagikan catatan kuliah dengan fitur AI, flashcard, dan leaderboard kampus." />
+                <meta property="og:title" content="NoteStation - Platform Catatan Digital untuk Mahasiswa" />
+                <meta property="og:description" content="Buat, kelola, dan bagikan catatan kuliah." />
+                <meta property="og:image" content="/og-image.png" />
+            </Head>
             <div className="min-h-screen bg-gradient-to-br from-blue-600 via-blue-500 to-blue-300 text-white font-sans selection:bg-blue-800 selection:text-white overflow-x-hidden">
 
                 <nav className="flex items-center justify-between px-6 py-6 max-w-7xl mx-auto">

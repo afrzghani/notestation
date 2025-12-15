@@ -3,6 +3,9 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="NoteStation - Platform catatan digital untuk mahasiswa. Buat, kelola, dan bagikan catatan kuliah dengan mahasiswa lainnya.">
+        <meta name="keywords" content="catatan kuliah, flashcard, belajar, mahasiswa">
+        <meta name="author" content="NoteStation">
 
         {{-- Inline script to detect system dark mode preference and apply it immediately --}}
         <script>
