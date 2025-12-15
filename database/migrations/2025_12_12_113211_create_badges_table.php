@@ -11,18 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('badges', function (Blueprint $table) {
-            $table->id();
-            $table->string('slug')->unique();
-            $table->string('name');
-            $table->string('description');
-            $table->string('icon');
-            $table->string('category');
-            $table->tinyInteger('tier')->default(1);
-            $table->string('requirement_type');
-            $table->integer('requirement_value');
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('badges')) {
+            Schema::create('badges', function (Blueprint $table) {
+                $table->id();
+                $table->string('slug')->unique();
+                $table->string('name');
+                $table->string('description');
+                $table->string('icon');
+                $table->string('category');
+                $table->tinyInteger('tier')->default(1);
+                $table->string('requirement_type');
+                $table->integer('requirement_value');
+                $table->timestamps();
+            });
+        }
     }
 
     /**
