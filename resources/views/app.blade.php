@@ -7,6 +7,18 @@
         <meta name="keywords" content="catatan kuliah, flashcard, belajar, mahasiswa">
         <meta name="author" content="NoteStation">
 
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="NoteStation">
+        <meta property="og:title" content="NoteStation - Platform Catatan Digital untuk Mahasiswa">
+        <meta property="og:description" content="Buat, kelola, dan bagikan catatan kuliah dengan fitur AI, flashcard, dan leaderboard kampus.">
+        <meta property="og:image" content="{{ url('/og-image.png') }}">
+        <meta property="og:url" content="{{ url('/') }}">
+
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="NoteStation - Platform Catatan Digital">
+        <meta name="twitter:description" content="Buat, kelola, dan bagikan catatan kuliah dengan fitur AI.">
+        <meta name="twitter:image" content="{{ url('/og-image.png') }}">
+
         {{-- Inline script to detect system dark mode preference and apply it immediately --}}
         <script>
             (function() {
