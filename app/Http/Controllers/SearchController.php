@@ -17,9 +17,9 @@ class SearchController extends Controller
                 ->where('visibility', 'public')
                 ->where('status', 'published')
                 ->where(function($query) use ($q) {
-                    $query->where('title', 'like', "%$q%")
-                          ->orWhere('content_text', 'like', "%$q%")
-                          ->orWhere('content_html', 'like', "%$q%")
+                    $query->where('title', 'ilike', "%$q%")
+                          ->orWhere('content_text', 'ilike', "%$q%")
+                          ->orWhere('content_html', 'ilike', "%$q%")
                     ;
                 })
                 ->with([

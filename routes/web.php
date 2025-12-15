@@ -10,6 +10,7 @@ use App\Http\Controllers\NoteBookmarkController;
 use App\Http\Controllers\NoteLikeController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProfilePageController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -20,13 +21,9 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-Route::get('search-results', function (\Illuminate\Http\Request $request) {
-    return Inertia::render('search-hasil', [
-        'q' => $request->query('q', ''),
-    ]);
-})->name('search.results');
-
 Route::middleware(['auth', 'verified', 'profile.complete'])->group(function () {
+    Route::get('search-hasil', [SearchController::class, 'results'])->name('search.hasil');
+
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('explore', [DashboardController::class, 'explore'])->name('explore');
     Route::get('bookmarks', [BookmarkController::class, 'index'])->name('bookmarks.index');
@@ -59,9 +56,6 @@ Route::middleware(['auth', 'verified', 'profile.complete'])->group(function () {
 
     // AI Chat routes
     Route::post('api/notes/{note}/chat', [\App\Http\Controllers\AiChatController::class, 'chat'])->name('notes.chat');
-
-    // Search Results Page
-    Route::get('search-results', [\App\Http\Controllers\SearchController::class, 'results'])->name('search.results');
 });
 
 require __DIR__.'/settings.php';

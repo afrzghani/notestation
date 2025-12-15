@@ -9,7 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { type BreadcrumbItem } from '@/types';
 import { show as showProfile } from '@/routes/profile';
-import { Edit, Trash2, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Shuffle, RefreshCcw, Flame, Layers, Calendar, Eye, EyeOff, RotateCw, ArrowLeft, Tag as TagIcon, Heart, MessageCircle, Bookmark, FileText, X, Paperclip } from 'lucide-react';
+import { Edit, Trash2, ChevronDown, ChevronUp, ChevronLeft, ChevronRight, Shuffle, RefreshCcw, Flame, Layers, Download, Eye, EyeOff, RotateCw, ArrowLeft, Tag as TagIcon, Heart, MessageCircle, Bookmark, FileText, X, Paperclip } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { CommentSection } from '@/components/comment-section';
@@ -401,17 +401,19 @@ export default function NoteShow({ note, isOwner = false, isReadRoute = false }:
 
                     <Tabs defaultValue="content" className="w-full">
                         <TabsList className="grid w-full grid-cols-3">
-                            <TabsTrigger value="content" className="gap-1 sm:gap-2 cursor-pointer text-xs sm:text-sm">
-                                <FileText className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                                Catatan
+                            <TabsTrigger value="content" className="gap-1.5 cursor-pointer">
+                                <FileText className="h-4 w-4" />
+                                <span className="hidden sm:inline">Catatan</span>
                             </TabsTrigger>
-                            <TabsTrigger value="attachments" className="gap-1 sm:gap-2 cursor-pointer text-xs sm:text-sm">
-                                <Paperclip className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                                <span>Lampiran ({(note.attachments?.length ?? 0) + (note.file_url && !note.attachments?.length ? 1 : 0)})</span>
+                            <TabsTrigger value="attachments" className="gap-1.5 cursor-pointer">
+                                <Paperclip className="h-4 w-4" />
+                                <span className="hidden sm:inline">Lampiran</span>
+                                <span className="text-xs">({(note.attachments?.length ?? 0) + (note.file_url && !note.attachments?.length ? 1 : 0)})</span>
                             </TabsTrigger>
-                            <TabsTrigger value="comments" className="gap-1 sm:gap-2 cursor-pointer text-xs sm:text-sm">
-                                <MessageCircle className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-                                <span>Komentar ({commentsCount})</span>
+                            <TabsTrigger value="comments" className="gap-1.5 cursor-pointer">
+                                <MessageCircle className="h-4 w-4" />
+                                <span className="hidden sm:inline">Komentar</span>
+                                <span className="text-xs">({commentsCount})</span>
                             </TabsTrigger>
                         </TabsList>
 
@@ -620,7 +622,7 @@ export default function NoteShow({ note, isOwner = false, isReadRoute = false }:
                                                         <Badge variant="secondary" className="uppercase">
                                                             {attachment.file_type || 'FILE'}
                                                         </Badge>
-                                                        <span className="text-sm font-medium truncate max-w-[120px] md:max-w-xs">
+                                                        <span className="text-sm font-medium truncate max-w-[150px] md:max-w-xs">
                                                             {attachment.file_name}
                                                         </span>
                                                     </div>
@@ -631,7 +633,7 @@ export default function NoteShow({ note, isOwner = false, isReadRoute = false }:
                                                             asChild
                                                         >
                                                             <a href={attachment.url} download target="_blank" rel="noopener noreferrer">
-                                                                Download
+                                                                <Download className="h-4 w-4" />
                                                             </a>
                                                         </Button>
                                                         {isOwner && (
